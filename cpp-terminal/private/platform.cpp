@@ -99,7 +99,7 @@ bool Term::Private::is_stdout_a_tty()
 
 std::string Term::Private::getenv(const std::string& env)
 {
-#if _WIN32
+#ifdef _WIN32
   std::size_t requiredSize{0};
   getenv_s(&requiredSize, nullptr, 0, env.c_str());
   if(requiredSize == 0) return std::string();
