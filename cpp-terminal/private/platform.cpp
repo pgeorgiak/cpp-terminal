@@ -129,6 +129,8 @@ std::tuple<std::size_t, std::size_t> Term::Private::get_term_size()
     // This happens when we are not connected to a terminal
     throw std::runtime_error("Couldn't get terminal size. Is it connected to a TTY?");
   }
+#elif ESP32
+    return std::tuple<std::size_t, std::size_t>{40, 80};
 #else
   struct winsize ws
   {
